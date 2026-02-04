@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 
 function User() {
     const  [user, setUser] = useState(null);
@@ -21,3 +21,5 @@ function User() {
         </div>
     )
 }
+
+export default User;
