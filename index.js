@@ -9,6 +9,13 @@ app.get("/", (req, res) => {
     res.send("Hello from Node!");
 });
 
+app.get("/user", (req, res) => {
+    res.json({
+        name:"Annie",
+        role:"Admin"
+    });
+});
+
 app.listen(3001, () => {
     console.log("Server running on port 3001");
 });
