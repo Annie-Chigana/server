@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 
 app.get("/user", (req, res) => {
     res.json({
+        id: "01",
         name:"Annie",
         role:"Admin"
     });
