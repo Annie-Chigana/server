@@ -10,23 +10,28 @@ app.get("/", (req, res) => {
     res.send("Hello from Node!");
 });
 
-app.get("/user", (req, res) => {
-    res.json({
-        id: "01",
-        name:"Annie",
-        role:"Admin",
-        password: bcrypt.hashSync("1234", 10)
-    });
-});
+const users = [
+    {
+        username: "annie",
+        password: bcrypt.hashSync("1234", 10),
+        role: "admin"
+     },
+     {
+        username: "john",
+        password: bcrypt.hashSync("abcd", 10),
+        role: "user"
+     }
+];
+
 
 app.post("/login", async (req, res) => {
-    const { name, password } = req.body;
+    const { username, password } = req.body;
 
     const user = useSyncExternalStore.find(
-        u => u.name === name.toLowerCase()
+        u => u.username === name.toLowerCase()
     );
 
-    if (user) {
+    if (!user) {
         return res.json({
             success:false,
             message: "User not found"
@@ -45,7 +50,7 @@ app.post("/login", async (req, res) => {
 
     res.json({
         success: true,
-        name: user.name,
+        username: user.username,
         role: user.role
     });
 });
