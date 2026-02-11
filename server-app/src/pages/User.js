@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 
 function User() {
-    const [user, setUser] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [result, setResult] = useState(null);
 
@@ -14,7 +14,7 @@ function User() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ user, password })
+                body: JSON.stringify({ username, password })
             })
             .then(res => res.json())
             .then(data => setResult(data));
@@ -26,8 +26,8 @@ function User() {
 
             <input
             placeholder = "username"
-            value={user}
-            onChange={e => setUser(e.target.value)}
+            value={username}
+            onChange={e => setUsername(e.target.value)}
             />
 
             <br /> <br />
@@ -52,6 +52,9 @@ function User() {
                 </p>
             )}
 
+            {result && !result.success && (
+                <p style={{ color: "red" }}>{result.meassage}</p>
+            )}
 
         </div>
     )
