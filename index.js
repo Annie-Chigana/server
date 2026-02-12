@@ -28,7 +28,7 @@ app.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     const user = useSyncExternalStore.find(
-        u => u.username === name.toLowerCase()
+        u => u.username === username.toLowerCase()
     );
 
     if (!user) {
