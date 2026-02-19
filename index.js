@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 const users = [
     {
         username: "annie",
-        password: bcrypt.hashSync("1234", 10),
+        password: bcrypt.hashSync("12345", 10),
         role: "admin"
      },
      {
